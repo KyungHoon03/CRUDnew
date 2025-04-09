@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{#isEdit}}게시글 수정{{/isEdit}}{{^isEdit}}게시글 작성{{/isEdit}}</title>
+</head>
+<body>
+<h1>{{#isEdit}}게시글 수정{{/isEdit}}{{^isEdit}}게시글 작성{{/isEdit}}</h1>
+
+<form action="{{formAction}}" method="post">
+    {{#isEdit}}
+        <input type="hidden" name="_method" value="put"/>
+    {{/isEdit}}
+
+    <label>작성자:</label>
+    <input type="text" name="name" value="{{name}}" required/><br/>
+
+    <label>제목:</label>
+    <input type="text" name="title" value="{{title}}" required/><br/>
+
+    <label>내용:</label>
+    <textarea name="content" rows="5" cols="30" required>{{content}}</textarea><br/>
+
+    <button type="submit">{{#isEdit}}수정하기{{/isEdit}}{{^isEdit}}작성하기{{/isEdit}}</button>
+    <a href="/posts">목록으로</a>
+</form>
+</body>
+</html>
+
+
